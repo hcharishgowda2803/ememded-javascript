@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Invoice</title>
+    <style>
+        .company-info {
+            float: left;
+            width: 50%;
+        }
+
+        .signature-info {
+            float: left;
+            width: 50%;
+            margin-top: 10px;
+        }
+
+        .merchant-info {
+            margin-top: 20px;
+            float: none;
+            width: 50%;
+        }
+
+        .invoice-info {
+            float: right;
+            width: 50%;
+            text-align: right;
+            margin-top: 50px;
+        }
+
+        .invoice-date {
+            float: right;
+            width: 50%;
+            text-align: right;
+            margin-top: -120px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+
+        .logo {
+            display: inline-block;
+            width: 150px;
+            height: 50px;
+            margin-top: 20px;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        body {
+            padding: 0 50px; /* Add 50px padding to both the left and right sides */
+        }
+
+        .note {
+            margin-top: 100px
+        }
+       thead{
+           background-color: gray;
+       }
+
+    </style>
+</head>
+<body>
+<div class="company-info">
+    <img src="https://res.cloudinary.com/tipplr/image/upload/v1681129415/tipplr-logo_tdsrfx.png" alt="Company Logo" class="logo">
+    <h3>Food Space Technology pvt ltd</h3>
+    <p>#12 Crescent Cunningham Road<br>
+        Bangalore,Karnataka 56001<br>
+        GSTIN:29AAECF1747N1Z6<br>
+    </p>
+</div>
+<div class="invoice-info">
+    <h1 class="bold">Tax Invoice</h1>
+    <h4><span>#INV-</span>002298</h4>
+</div>
+<div class="merchant-info">
+    <h5>Bill To Partner</h5>
+    <h2>Purple Suites</h2>
+    <p>#374 7th block koramangala<br>
+        Bangalore,Karnataka 56001<br>
+        GSTIN:29AAECF1747N1ZU<br>
+    </p>
+</div>
+<div class="invoice-date">
+    <h4><span>Invoice Date :</span>'12/03/2023'</h4>
+    <h4><span>Weekly Payment :</span>Due on Receipt</h4>
+</div>
+
+<div class="merchant-info">
+    <h4><span>Place of Supply:</span>Karnataka(29)</h4>
+</div>
+<div class="merchant-info">
+    <h5><span>Subject:</span>Tax invoice (March)</h5>
+</div>
+<div>
+    <table class="table table-bordered" style="border-collapse: collapse; width: 100%">
+        <thead >
+        <tr>
+            <th scope="col">#</th>
+            <th class="text-center" scope="col">Item &amp; Description</th>
+            <th class="text-center" scope="col">HSN/SAC</th>
+            <th class="text-center" scope="col">Qty</th>
+            <th class="text-center" scope="col">Service Charge</th>
+            <th class="text-center" scope="col">CGST</th>
+            <th class="text-center" scope="col">SGST</th>
+            <th class="text-center" scope="col">Amount</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="text-center">1</td>
+            <td class="text-center">Pizza Margherita</td>
+            <td class="text-center">1234</td>
+            <td class="text-center">2</td>
+            <td class="text-center">10</td>
+            <td class="text-center">9%</td>
+            <td class="text-center">9%</td>
+            <td class="text-center">500.00</td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td colspan="2" class="text-center"><strong>Sub Total</strong></td>
+            <td class="text-center">500.00</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td colspan="2" class="text-center"><strong>CGST(2.5%)</strong></td>
+            <td class="text-center">50.00</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td colspan="2" class="text-center"><strong>SGST(2.5%)</strong></td>
+            <td class="text-center">50.00</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td colspan="2" class="text-center"><strong>Total</strong></td>
+            <td class="text-center">600.00</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td colspan="2" class="text-center" style="background: lightgrey"><strong>Paid full</strong></td>
+            <td class="text-center" style="background: lightgrey">600.00</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td colspan="3" class="text-center" style="background: lightgrey"><strong>Total In Words</strong></td>
+            <td class="text-center" style="background: lightgrey"><%= numInWords(600)%></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="note">
+    <div>Notes</div>
+    <div>Please check the attached appendix for more payment details,Thanks for your business</div>
+</div>
+<div class="signature-info">
+    <img src="https://res.cloudinary.com/tipplr/image/upload/v1681129421/tipplrsignature_koesgp.png" alt="Signature Logo" class="logo">
+</div>
+</body>
+</html>
