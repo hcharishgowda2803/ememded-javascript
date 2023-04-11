@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,6 +36,10 @@
 
         .text-center {
             text-align: center;
+        }
+
+        .text-capitalize{
+           text-transform: capitalize;
         }
 
 
@@ -78,15 +81,13 @@
     <h4><span>#INV-</span>002298</h4>
 </div>
 <div class="merchant-info">
-    <h5>Bill To Partner</h5>
-    <h2>Purple Suites</h2>
-    <p>#374 7th block koramangala<br>
-        Bangalore,Karnataka 56001<br>
-        GSTIN:29AAECF1747N1ZU<br>
-    </p>
+    <div style="font-weight: 500">Bill To Partner</div>
+    <div style="font-weight: 700;font-size: medium;padding-top: 5px"><%= partner.name%></div>
+    <div style="font-weight: 500"><%= partner.address%></div>
+    <div style="font-weight: 500">GSTIN:<%= partner.gst_number%></div>
 </div>
 <div class="invoice-date">
-    <h4><span>Invoice Date :</span>'12/03/2023'</h4>
+    <h4><span>Invoice Date :</span><%= dateTime(partner.timestamp)%></h4>
     <h4><span>Weekly Payment :</span>Due on Receipt</h4>
 </div>
 
@@ -94,92 +95,43 @@
     <h4><span>Place of Supply:</span>Karnataka(29)</h4>
 </div>
 <div class="merchant-info">
-    <h5><span>Subject:</span>Tax invoice (March)</h5>
+    <h5><span>Subject:</span>Tax invoice</h5>
 </div>
 <div>
     <table class="table table-bordered" style="border-collapse: collapse; width: 100%">
-        <thead >
+        <thead>
         <tr>
-            <th scope="col">#</th>
-            <th class="text-center" scope="col">Item &amp; Description</th>
-            <th class="text-center" scope="col">HSN/SAC</th>
-            <th class="text-center" scope="col">Qty</th>
-            <th class="text-center" scope="col">Service Charge</th>
-            <th class="text-center" scope="col">CGST</th>
-            <th class="text-center" scope="col">SGST</th>
-            <th class="text-center" scope="col">Amount</th>
+            <% Object.keys(data[0]).forEach(function(key) { %>
+                <th class="text-center text-capitalize" scope="col"><%= key %></th>
+            <% }); %>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td class="text-center">1</td>
-            <td class="text-center">Pizza Margherita</td>
-            <td class="text-center">1234</td>
-            <td class="text-center">2</td>
-            <td class="text-center">10</td>
-            <td class="text-center">9%</td>
-            <td class="text-center">9%</td>
-            <td class="text-center">500.00</td>
-        </tr>
+        <% data.forEach(function(item) { %>
+            <tr class="text-center">
+                <% Object.values(item).forEach(function(value) { %>
+                    <td><%= value %></td>
+                <% }); %>
+            </tr>
+        <% }); %>
         <tr>
             <td></td>
         </tr>
         <tr>
             <td></td>
         </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td colspan="2" class="text-center"><strong>Sub Total</strong></td>
-            <td class="text-center">500.00</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td colspan="2" class="text-center"><strong>CGST(2.5%)</strong></td>
-            <td class="text-center">50.00</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td colspan="2" class="text-center"><strong>SGST(2.5%)</strong></td>
-            <td class="text-center">50.00</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td colspan="2" class="text-center"><strong>Total</strong></td>
-            <td class="text-center">600.00</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td colspan="2" class="text-center" style="background: lightgrey"><strong>Paid full</strong></td>
-            <td class="text-center" style="background: lightgrey">600.00</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td colspan="3" class="text-center" style="background: lightgrey"><strong>Total In Words</strong></td>
-            <td class="text-center" style="background: lightgrey"><%= numInWords(600)%></td>
-        </tr>
+        <% for (var key in charges[0]) { %>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td colspan="2" class="text-center text-capitalize"><strong><%= key %></strong></td>
+                <td class="text-center"><%= charges[0][key] %></td>
+            </tr>
+        <% } %>
         </tbody>
     </table>
 </div>
